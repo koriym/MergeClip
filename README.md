@@ -20,6 +20,10 @@ MergeClip is a macOS tool that quickly merges the contents of multiple text file
 
 1. Download [MergeClip](https://github.com/koriym/MergeClip/blob/1.x/MergeClip.zip), unzip, open it, and follow the installation instructions.
 
+<img width="602" alt="Quick Action Installer" src="https://github.com/koriym/MergeClip/assets/529021/40c2f991-8feb-4145-b0bf-4b6c61ba1930">
+
+(Japanese screen example)
+
 ### As a Shell Script
 
 1. Download [mergeclip.sh](https://github.com/koriym/MergeClip/blob/1.x/mergeclip.sh) and save it to a suitable location.
@@ -34,6 +38,8 @@ MergeClip is a macOS tool that quickly merges the contents of multiple text file
 ### As a Folder Action
 
 Simply select Quick Actions > MergeClip from the folder's context menu, and the merged content will be automatically copied to your clipboard.
+
+<img width="138" alt="Folder Action" src="https://github.com/koriym/MergeClip/assets/529021/bea8eb57-c105-4504-b8ab-87d000ef3d02">
 
 ### As a Shell Script
 
