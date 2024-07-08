@@ -18,11 +18,11 @@ MergeClipは、複数のテキストファイルの内容を素早くマージ�
 
 ### フォルダアクションとして設定
 
-1. MergeClipをダウンロードし、開き指示に従ってインストールします。
+1. [MergeClip](https://github.com/koriym/MergeClip/blob/1.x/MergeClip.zip)をダウンロードし、Zipを開き指示に従ってインストールします。
 
 ### シェルスクリプトとして使用
 
-1. mergeclip.shをダウンロードし、適当な場所に保存します。
+1. [mergeclip.sh](https://github.com/koriym/MergeClip/blob/1.x/mergeclip.sh)をダウンロードし、適当な場所に保存します。
 2. ターミナルで以下のコマンドを実行して、スクリプトに実行権限を付与します：
    ```
    mv mergeclip.sh /path/to/mergeclip
@@ -55,7 +55,6 @@ MergeClipは、複数のテキストファイルの内容を素早くマージ�
 
 MergeClipは、以下のようなフォーマットでファイルの内容をマージします：
 
-```
 ファイル名1
 ```言語名
 ファイルの内容

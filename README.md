@@ -18,11 +18,11 @@ MergeClip is a macOS tool that quickly merges the contents of multiple text file
 
 ### As a Folder Action
 
-1. Download MergeClip, open it, and follow the installation instructions.
+1. Download [MergeClip](https://github.com/koriym/MergeClip/blob/1.x/MergeClip.zip), unzip, open it, and follow the installation instructions.
 
 ### As a Shell Script
 
-1. Download mergeclip.sh and save it to a suitable location.
+1. Download [mergeclip.sh](https://github.com/koriym/MergeClip/blob/1.x/mergeclip.sh) and save it to a suitable location.
 2. Open Terminal and run the following commands to make the script executable:
    ```
    mv mergeclip.sh /path/to/mergeclip
@@ -55,7 +55,6 @@ Run the following command in Terminal:
 
 MergeClip merges file contents in the following format:
 
-```
 Filename1
 ```language
 File content
