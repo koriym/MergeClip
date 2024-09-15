@@ -1,5 +1,7 @@
 # MergeClip
 
+[Japanese](README.ja.md)
+
 A utility for sharing text files with AI
 
 Eliminates upload restrictions due to file extensions and the hassle of copy & paste,
