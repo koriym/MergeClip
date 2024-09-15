@@ -8,6 +8,19 @@ totalCharacterCount=0
 totalFileCount=0
 mergedContent=""
 
+# Debug log file
+DEBUG_LOG="/tmp/file_merger_debug.log"
+
+# Temporary file for content
+TEMP_FILE="/tmp/merged_content.txt"
+
+# Function to log debug information
+debug_log() {
+    echo "$(date): $1" >> "$DEBUG_LOG"
+}
+
+debug_log "Script started"
+
 # Function to check if a file is binary
 is_binary() {
     file --mime-encoding "$1" | grep -q binary
@@ -18,12 +31,12 @@ process_file() {
     local file="$1"
 
     if [ $totalCharacterCount -ge $MAX_CHARS ]; then
-        echo "Reached character limit. Stopping scan."
+        debug_log "Reached character limit. Stopping scan."
         return 1
     fi
 
     if is_binary "$file"; then
-        echo "Skipping binary file: $file"
+        debug_log "Skipping binary file: $file"
         return 0
     fi
 
@@ -34,13 +47,14 @@ process_file() {
     fileCharCount=${#fileContent}
 
     if [ $((totalCharacterCount + fileCharCount)) -ge $MAX_CHARS ]; then
-        echo "Adding this file would exceed the character limit. Stopping scan."
+        debug_log "Adding this file would exceed the character limit. Stopping scan."
         return 1
     fi
 
     mergedContent+="$fileContent"
     totalCharacterCount=$((totalCharacterCount + fileCharCount))
     totalFileCount=$((totalFileCount + 1))
+    debug_log "Processed file: $file"
     return 0
 }
 
@@ -55,7 +69,7 @@ process_directory() {
 
 # Check if arguments are provided
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 <file1> <file2> ... <directory1> <directory2> ..."
+    debug_log "No arguments provided. Exiting."
     exit 1
 fi
 
@@ -66,22 +80,48 @@ for item in "$@"; do
     elif [ -d "$item" ]; then
         process_directory "$item"
     else
-        echo "Error: '$item' is not a valid file or directory."
+        debug_log "Error: '$item' is not a valid file or directory."
     fi
 done
 
-# Copy to clipboard using pbcopy
-echo -e "$mergedContent" | pbcopy
+# Write content to temporary file
+echo -n "$mergedContent" > "$TEMP_FILE"
+debug_log "Content written to temporary file: $TEMP_FILE"
+
+# Attempt to copy to clipboard using pbcopy
+debug_log "Attempting to copy to clipboard using pbcopy..."
+cat "$TEMP_FILE" | pbcopy
+pbcopy_exit_code=$?
+debug_log "pbcopy operation completed. Exit code: $pbcopy_exit_code"
+
+# Check if pbcopy was successful
+if [ $pbcopy_exit_code -ne 0 ] || [ $(pbpaste | wc -c) -eq 0 ]; then
+    debug_log "pbcopy failed or clipboard is empty. Trying osascript method..."
+    osascript -e "set the clipboard to (do shell script \"cat $TEMP_FILE\")"
+    osascript_exit_code=$?
+    debug_log "osascript clipboard operation completed. Exit code: $osascript_exit_code"
+
+    if [ $osascript_exit_code -ne 0 ]; then
+        debug_log "Error: Both pbcopy and osascript methods failed."
+        osascript -e 'display alert "Error" message "Failed to copy content to clipboard. Please check the debug log for more information."'
+        exit 1
+    fi
+fi
 
 # Get the character count of the clipboard content
-clipboardCharCount=$(pbpaste | wc -m)
+clipboardCharCount=$(pbpaste | wc -c | tr -d '[:space:]')
+debug_log "Characters in clipboard: $clipboardCharCount"
 
 # Output the result
-#echo "Total files processed: $totalFileCount"
-#echo "Total characters in processed files: $totalCharacterCount"
-#echo "Characters copied to clipboard: $clipboardCharCount"
-#echo "Merged content has been copied to the clipboard."
-# Check if the script is run from Finder
+debug_log "Total files processed: $totalFileCount"
+debug_log "Total characters in processed files: $totalCharacterCount"
+debug_log "Characters copied to clipboard: $clipboardCharCount"
 
-# GUI
-# osascript -e "display dialog \"$totalFileCount files merged and copied to clipboard. $totalCharacterCount characters in total.\" buttons {\"OK\"} default button \"OK\""
+# Display result using osascript
+osascript -e "display dialog \"$totalFileCount files merged and copied to clipboard. $totalCharacterCount characters in total.\" buttons {\"OK\"} default button \"OK\"" 2>> "$DEBUG_LOG"
+
+# Clean up temporary file
+rm "$TEMP_FILE"
+debug_log "Temporary file removed"
+
+debug_log "Script completed"
