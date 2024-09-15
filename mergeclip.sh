@@ -117,8 +117,8 @@ debug_log "Total files processed: $totalFileCount"
 debug_log "Total characters in processed files: $totalCharacterCount"
 debug_log "Characters copied to clipboard: $clipboardCharCount"
 
-# Display result using osascript
-osascript -e "display dialog \"$totalFileCount files merged and copied to clipboard. $totalCharacterCount characters in total.\" buttons {\"OK\"} default button \"OK\"" 2>> "$DEBUG_LOG"
+# Display result using osascript (comment for CUI)
+# osascript -e "display dialog \"$totalFileCount files merged and copied to clipboard. $totalCharacterCount characters in total.\" buttons {\"OK\"} default button \"OK\"" 2>> "$DEBUG_LOG"
 
 # Clean up temporary file
 rm "$TEMP_FILE"
