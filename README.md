@@ -43,7 +43,7 @@ MergeClip is a macOS tool that quickly merges the contents of multiple text file
 
 ### As a Quick Action
 
-In Finder, select one or more target files or folders, then choose "Quick Actions > MergeClip" from the context menu. The merged content will be automatically copied to the clipboard.
+In Finder, select one or more target files or folders, then choose "Quick Actions > MergeClip" from the context menu. The merged content will be automatically copied to the clipboard, and a dialog will display the number of processed files.
 
 <img width="138" alt="Quick Action" src="https://github.com/koriym/MergeClip/assets/529021/bea8eb57-c105-4504-b8ab-87d000ef3d02">
 
