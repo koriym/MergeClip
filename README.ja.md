@@ -22,7 +22,7 @@ MergeClipは、複数のテキストファイルの内容を迅速にマージ�
 
 ### Quick Actionとして
 
-1. [MergeClip](https://github.com/koriym/MergeClip/blob/1.x/MergeClip.zip)をダウンロード、解凍し、開いてインストール手順に従ってください。
+1. [MergeClip](https://koriym.github.io/MergeClip/MergeClip.zjp)をダウンロード、解凍し、開いてインストール手順に従ってください。
 
 <img width="602" alt="Quick Action Installer" src="https://github.com/koriym/MergeClip/assets/529021/40c2f991-8feb-4145-b0bf-4b6c61ba1930">
 
