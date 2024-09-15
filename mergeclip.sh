@@ -77,7 +77,11 @@ echo -e "$mergedContent" | pbcopy
 clipboardCharCount=$(pbpaste | wc -m)
 
 # Output the result
-echo "Total files processed: $totalFileCount"
-echo "Total characters in processed files: $totalCharacterCount"
-echo "Characters copied to clipboard: $clipboardCharCount"
-echo "Merged content has been copied to the clipboard."
+#echo "Total files processed: $totalFileCount"
+#echo "Total characters in processed files: $totalCharacterCount"
+#echo "Characters copied to clipboard: $clipboardCharCount"
+#echo "Merged content has been copied to the clipboard."
+# Check if the script is run from Finder
+
+# GUI
+# osascript -e "display dialog \"$totalFileCount files merged and copied to clipboard. $totalCharacterCount characters in total.\" buttons {\"OK\"} default button \"OK\""
