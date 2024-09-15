@@ -1,0 +1,22 @@
+name: Upload MergeClip.zip as Artifact
+
+on:
+  push:
+    branches: [ 1.x ]
+  pull_request:
+    branches: [ 1.x ]
+  workflow_dispatch:
+
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Upload MergeClip.zip as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: MergeClip
+          path: MergeClip.zip
+          if-no-files-found: error
