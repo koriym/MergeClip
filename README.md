@@ -2,7 +2,7 @@
 
 [Japanese](README.ja.md)
 
-A utility for sharing text files with AI
+Quick text file sharing with AI
 
 Eliminates upload restrictions due to file extensions and the hassle of copy & paste,
 efficiently conveying the contents of multiple files to AI at once.
