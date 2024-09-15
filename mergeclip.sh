@@ -1,20 +1,5 @@
 #!/bin/bash
 
-# Get the selected directory from command line argument
-directory="$1"
-
-# Check if directory is provided
-if [ -z "$directory" ]; then
-    echo "Usage: $0 <directory>"
-    exit 1
-fi
-
-# Check if directory exists
-if [ ! -d "$directory" ]; then
-    echo "Error: Directory '$directory' does not exist."
-    exit 1
-fi
-
 # Set maximum character limit
 MAX_CHARS=100000
 
@@ -28,16 +13,18 @@ is_binary() {
     file --mime-encoding "$1" | grep -q binary
 }
 
-# Recursively search for files, excluding hidden and binary files, and merge them
-find "$directory" -type f ! -name '.*' | while read -r file; do
+# Function to process a single file
+process_file() {
+    local file="$1"
+
     if [ $totalCharacterCount -ge $MAX_CHARS ]; then
         echo "Reached character limit. Stopping scan."
-        break
+        return 1
     fi
 
     if is_binary "$file"; then
         echo "Skipping binary file: $file"
-        continue
+        return 0
     fi
 
     filename=$(basename "$file")
@@ -48,12 +35,39 @@ find "$directory" -type f ! -name '.*' | while read -r file; do
 
     if [ $((totalCharacterCount + fileCharCount)) -ge $MAX_CHARS ]; then
         echo "Adding this file would exceed the character limit. Stopping scan."
-        break
+        return 1
     fi
 
     mergedContent+="$fileContent"
     totalCharacterCount=$((totalCharacterCount + fileCharCount))
     totalFileCount=$((totalFileCount + 1))
+    return 0
+}
+
+# Function to process a directory
+process_directory() {
+    local directory="$1"
+
+    while IFS= read -r -d '' file; do
+        process_file "$file" || break
+    done < <(find "$directory" -type f ! -name '.*' -print0)
+}
+
+# Check if arguments are provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <file1> <file2> ... <directory1> <directory2> ..."
+    exit 1
+fi
+
+# Process all arguments
+for item in "$@"; do
+    if [ -f "$item" ]; then
+        process_file "$item"
+    elif [ -d "$item" ]; then
+        process_directory "$item"
+    else
+        echo "Error: '$item' is not a valid file or directory."
+    fi
 done
 
 # Copy to clipboard using pbcopy
