@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MergeClip - AIを活用するための効率的なテキストファイル共有ツール</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="MergeClipは、AIを使ってテキストファイルを素早く結合するmacOSツールで、ファイル共有を簡単にします。">
+    <meta name="keywords" content="MergeClip, テキストファイル共有, macOS, AI, クイックアクション">
+    <script src="language-redirect.js"></script>
+</head>
+<body class="bg-amber-50 text-gray-800 font-sans">
+<header class="bg-amber-100 py-12">
+    <div class="container mx-auto px-4 flex items-center justify-between">
+        <div>
+            <h1 class="text-4xl font-bold mb-2 text-amber-800">MergeClip🍯</h1>
+            <p class="text-xl text-amber-700">AIを活用する効率的なテキストファイル共有</p>
+        </div>
+        <img src="mascot.webp" alt="MergeClipのマスコット" class="rounded-lg shadow-md" width="300px"/>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+    <section class="mb-12">
+        <h2 class="text-3xl font-semibold mb-4 text-amber-800">MergeClipとは</h2>
+        <p class="text-lg">
+            MergeClipは、複数のテキストファイルの内容を素早く結合し、MacのクリップボードにコピーするmacOS用ツールです。AIチャットボットとのファイル共有を効率化することを目的としています。
+        </p>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-3xl font-semibold mb-4 text-amber-800">主な機能</h2>
+        <ul class="list-disc list-inside text-lg space-y-2">
+            <li>複数のテキストファイルを効率的に結合</li>
+            <li>バイナリファイルを自動的に除外</li>
+            <li>多言語対応（ファイル拡張子に基づく）</li>
+            <li>クイックアクションまたはコマンドラインから使用可能</li>
+            <li>処理したファイル数を通知</li>
+        </ul>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-3xl font-semibold mb-4 text-amber-800">インストール方法</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-2xl font-semibold mb-4">クイックアクションのインストール</h3>
+            <ol class="list-decimal list-inside text-lg space-y-2">
+                <li><a href="https://github.com/koriym/MergeClip/blob/1.x/MergeClip.zip" class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700">MergeClip</a>をダウンロード</li>
+                <li>ダウンロードしたファイルを解凍して開く</li>
+                <li>インストールガイドに従って設定を完了する</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-3xl font-semibold mb-4 text-amber-800">使用方法</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-2xl font-semibold mb-4">クイックアクションとして</h3>
+            <ol class="list-decimal list-inside text-lg space-y-2">
+                <li>Finderでファイルまたはフォルダを選択</li>
+                <li>右クリックして「クイックアクション > MergeClip」を選択</li>
+                <li>MergeClipがコンテンツをクリップボードにコピー</li>
+                <li>処理されたファイル数がダイアログで通知されます</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-3xl font-semibold mb-4 text-amber-800">MergeClipの出力フォーマット</h2>
+        <div class="bg-amber-100 rounded-lg p-6 font-mono">
+                <pre class="text-amber-800">
+ファイル名1.ext
+```ext
+ファイル1の内容
+```
+
+ファイル名2.py
+```py
+ファイル2の内容
+```
+                </pre>
+        </div>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-3xl font-semibold mb-4 text-amber-800">ユースケース</h2>
+        <ol class="list-decimal list-inside text-lg space-y-4">
+            <li>
+                <strong>AIによるソースコード解析：</strong>
+                <p class="ml-8">MergeClipでソースコードを含むフォルダを処理し、結果をAIチャットに貼り付けることで、コードベース全体の効率的な分析が可能になります。</p>
+            </li>
+            <li>
+                <strong>複数ファイルの一括翻訳・分析：</strong>
+                <p class="ml-8">MergeClipを使用してファイルを統合し、AIに一括して翻訳や分析を依頼することができます。</p>
+            </li>
+        </ol>
+    </section>
+</main>
+
+<footer class="bg-amber-200 py-8">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-amber-800">&copy; 2024 Akihio Koriyama. All rights reserved.</p>
+        <div class="mt-4">
+            <a href="https://github.com/koriym/MergeClip" class="text-amber-700 hover:text-amber-900 mx-2">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+        <div class="mt-4">
+            <a href="index.html" class="text-amber-700 hover:text-amber-900" onclick="setLanguagePreference('en'); return false;">English</a> |
+            <span class="text-amber-900">日本語</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
