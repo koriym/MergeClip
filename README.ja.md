@@ -30,7 +30,7 @@ MergeClipは、複数のテキストファイルの内容を迅速にマージ�
 
 ### シェルスクリプトとして
 
-1. [mergeclip.sh](https://github.com/koriym/MergeClip/blob/1.x/mergeclip.sh)をダウンロードし、適切な場所に保存します。
+1. [mergeclip.sh](https://koriym.github.io/MergeClip/MergeClip.zip)をダウンロードし、適切な場所に保存します。
 2. ターミナルを開き、以下のコマンドを実行してスクリプトを実行可能にします：
    ```
    mv mergeclip.sh /path/to/mergeclip
