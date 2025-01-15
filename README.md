@@ -98,10 +98,7 @@ This format allows AI to easily understand the file types and contents, generati
 
 ## Limitations
 
-- Processes up to 100,000 characters. Processing stops if this limit is exceeded.
 - Binary files are automatically excluded.
 - MergeClip is designed for macOS only and uses the `pbcopy` command for clipboard operations.
-
----
 
 Use MergeClip to make your communication with AI more efficient!
